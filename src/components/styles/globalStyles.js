@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
+
 html,
 body {
   box-sizing: border-box;
@@ -11,6 +12,7 @@ body {
   scroll-behavior: smooth;
   background-color: ${({ theme }) => theme.body};
   color: ${({ theme }) => theme.text};
+  transition: all 0.5s linear;
 }
 
 *,
