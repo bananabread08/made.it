@@ -1,13 +1,15 @@
 import styled from 'styled-components';
-
+import { CaretDownFill } from '@styled-icons/bootstrap/CaretDownFill';
+import { CaretUpFill } from '@styled-icons/bootstrap/CaretUpFill';
 const HomeSection = styled.section`
-  background-color: #dae0e5;
+  background-color: ${(props) => props.theme.mainbg};
   padding: 1em;
-  height: 100vh;
+  height: 100%;
+  line-height: 1.6;
 `;
 
 const HomeMain = styled.div`
-  width: 60%;
+  width: 800px;
   margin: 0 auto;
 
   @media screen and (max-width: 800px) {
@@ -24,11 +26,67 @@ const PostContainer = styled.ul`
 `;
 
 const Post = styled.li`
-  background-color: #fff;
+  background-color: ${(props) => props.theme.body};
   list-style: none;
-  border: 1px solid black;
+  border: 1px solid;
+  border-color: ${(props) => props.theme.text};
+  padding: 0.5rem;
+  button {
+    height: 30px;
+    width: 30px;
+    background: none;
+    border: none;
+    color: ${(props) => props.theme.text};
+    cursor: pointer;
+
+    &:hover {
+      color: gray;
+    }
+  }
 `;
 function Home() {
+  const postData = [
+    {
+      title: 'This is a Title',
+      content:
+        'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo molestias non delectus, eaque, esse vitae vel exercitationem eius, aliquam obcaecati eligendi enim sapiente dolor animi.',
+      votes: 50,
+      user: 'Jam',
+      comments: ['nice', 'wow', 'good post', 'updvoted'],
+    },
+    {
+      title: 'This is a Title',
+      content:
+        'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo molestias non delectus, eaque, esse vitae vel exercitationem eius, aliquam obcaecati eligendi enim sapiente dolor animi.',
+      votes: -100,
+      user: 'Maj',
+      comments: ['nice', 'wow', 'good post', 'updvoted'],
+    },
+    {
+      title: 'This is a Title',
+      content:
+        'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo molestias non delectus, eaque, esse vitae vel exercitationem eius, aliquam obcaecati eligendi enim sapiente dolor animi.',
+      votes: 1267,
+      user: 'Alfred',
+      comments: ['nice', 'wow', 'good post', 'updvoted'],
+    },
+    {
+      title: 'This is a Title',
+      content:
+        'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo molestias non delectus, eaque, esse vitae vel exercitationem eius, aliquam obcaecati eligendi enim sapiente dolor animi.',
+      votes: 599,
+      user: 'Recca',
+      comments: ['nice', 'wow', 'good post', 'updvoted'],
+    },
+    {
+      title: 'This is a Title',
+      content:
+        'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo molestias non delectus, eaque, esse vitae vel exercitationem eius, aliquam obcaecati eligendi enim sapiente dolor animi.',
+      votes: 0,
+      user: 'Myers',
+      comments: ['nice', 'wow', 'good post', 'updvoted'],
+    },
+  ];
   return (
     <HomeSection>
       <HomeMain>
@@ -37,46 +95,21 @@ function Home() {
           <input type="text" />
         </div>
         <PostContainer>
-          <Post>
-            <h3>This is a Title</h3>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio
-              modi nesciunt facere sequi magni nihil, corporis nemo illum quis,
-              eum impedit. Expedita iusto vel laborum.
-            </p>
-            <button>^</button>
-            <button>v</button>
-          </Post>
-          <Post>
-            <h3>This is a Title</h3>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio
-              modi nesciunt facere sequi magni nihil, corporis nemo illum quis,
-              eum impedit. Expedita iusto vel laborum.
-            </p>
-            <button>^</button>
-            <button>v</button>
-          </Post>
-          <Post>
-            <h3>This is a Title</h3>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio
-              modi nesciunt facere sequi magni nihil, corporis nemo illum quis,
-              eum impedit. Expedita iusto vel laborum.
-            </p>
-            <button>^</button>
-            <button>v</button>
-          </Post>
-          <Post>
-            <h3>This is a Title</h3>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio
-              modi nesciunt facere sequi magni nihil, corporis nemo illum quis,
-              eum impedit. Expedita iusto vel laborum.
-            </p>
-            <button>^</button>
-            <button>v</button>
-          </Post>
+          {postData.map((post) => {
+            return (
+              <Post key={post.title + post.user}>
+                <h2>{post.title}</h2>
+                <p>{post.content}</p>
+                <button>
+                  <CaretUpFill />
+                </button>
+                <span> {post.votes} </span>
+                <button>
+                  <CaretDownFill />
+                </button>
+              </Post>
+            );
+          })}
         </PostContainer>
       </HomeMain>
     </HomeSection>

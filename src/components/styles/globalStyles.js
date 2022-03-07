@@ -28,16 +28,14 @@ body {
 
 export const lightTheme = {
   body: '#fff',
-  text: '#121212',
+  text: '#1A1A1B',
   button: '#582FBB',
-  ddtext: '#fff',
-  ddbg: '#121212',
+  mainbg: '#dae0e5',
 };
 
 export const darkTheme = {
-  text: '#fff',
-  body: '#121212',
+  text: '#D7DADC',
+  body: '#1A1A1B',
   button: '#FABE58',
-  ddtext: '#121212',
-  ddbg: '#fff',
+  mainbg: '#030303',
 };
